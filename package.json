@@ -1,0 +1,45 @@
+{
+  "name": "mcp-submit",
+  "version": "0.1.0",
+  "description": "Submit your MCP server to all major directories in one command",
+  "type": "module",
+  "bin": {
+    "mcp-submit": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "node --test --experimental-strip-types tests/**/*.test.ts",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "cli",
+    "directory",
+    "submit",
+    "publish"
+  ],
+  "author": "Jordan Lyall",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jordanlyall/mcp-submit"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^8.3.2",
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "@octokit/rest": "^22.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}
