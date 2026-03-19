@@ -1,0 +1,9 @@
+{
+  "name": "test-mcp",
+  "version": "1.0.0",
+  "description": "A test MCP server",
+  "repository": { "type": "git", "url": "https://github.com/test/test-mcp" },
+  "homepage": "https://test-mcp.dev",
+  "author": "Test Author",
+  "license": "MIT"
+}

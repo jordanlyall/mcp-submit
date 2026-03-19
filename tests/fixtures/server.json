@@ -1,0 +1,11 @@
+{
+  "name": "test-mcp",
+  "description": "A test MCP server",
+  "version": "1.0.0",
+  "packages": [{ "registry_name": "npm", "name": "test-mcp" }],
+  "remotes": [{ "type": "streamable-http", "url": "https://example.com/mcp" }],
+  "tools": [
+    { "name": "get_data", "description": "Fetches data" },
+    { "name": "set_data", "description": "Sets data" }
+  ]
+}
