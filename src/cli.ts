@@ -72,22 +72,24 @@ async function main() {
     }
   }
 
-  // Resolve GitHub token
+  // Resolve GitHub token (skip prompt in dry-run)
   let githubToken: string | undefined;
-  const auth = await getAuth();
-  if (auth?.githubToken) {
-    githubToken = auth.githubToken;
-  } else {
-    try {
-      githubToken = execFileSync('gh', ['auth', 'token'], { encoding: 'utf-8' }).trim();
-    } catch {
-      // gh not installed or not authenticated
+  if (!values['dry-run']) {
+    const auth = await getAuth();
+    if (auth?.githubToken) {
+      githubToken = auth.githubToken;
+    } else {
+      try {
+        githubToken = execFileSync('gh', ['auth', 'token'], { encoding: 'utf-8' }).trim();
+      } catch {
+        // gh not installed or not authenticated
+      }
     }
-  }
 
-  if (!githubToken) {
-    githubToken = await password({ message: '  GitHub token (repo scope):' });
-    if (githubToken) await saveAuth({ githubToken });
+    if (!githubToken) {
+      githubToken = await password({ message: '  GitHub token (repo scope):' });
+      if (githubToken) await saveAuth({ githubToken });
+    }
   }
 
   // Filter providers
