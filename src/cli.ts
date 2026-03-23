@@ -75,10 +75,21 @@ async function main() {
   // Resolve GitHub token (skip prompt in dry-run)
   let githubToken: string | undefined;
   if (!values['dry-run']) {
-    const auth = await getAuth();
-    if (auth?.githubToken) {
-      githubToken = auth.githubToken;
-    } else {
+    // 1. Environment variable
+    if (process.env.GITHUB_TOKEN) {
+      githubToken = process.env.GITHUB_TOKEN;
+    }
+
+    // 2. Saved auth file
+    if (!githubToken) {
+      const auth = await getAuth();
+      if (auth?.githubToken) {
+        githubToken = auth.githubToken;
+      }
+    }
+
+    // 3. gh CLI
+    if (!githubToken) {
       try {
         githubToken = execFileSync('gh', ['auth', 'token'], { encoding: 'utf-8' }).trim();
       } catch {
@@ -86,6 +97,7 @@ async function main() {
       }
     }
 
+    // 4. Interactive prompt (fallback)
     if (!githubToken) {
       githubToken = await password({ message: '  GitHub token (repo scope):' });
       if (githubToken) await saveAuth({ githubToken });
