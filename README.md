@@ -64,6 +64,7 @@ $ npx mcp-submit
 | PulseMCP | Browser | Opens form |
 | mcpservers.org | Browser | Opens form |
 | Claude Desktop Extensions | Browser | Opens form |
+| AllMCPs | Browser | Opens form |
 | GitHub MCP Registry | Auto | Free (syncs from official) |
 | Glama.ai | Auto | Free (indexes from GitHub) |
 

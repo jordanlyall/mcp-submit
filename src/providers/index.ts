@@ -9,6 +9,7 @@ import { dockerRegistryProvider } from './docker-registry.ts';
 import { pulseMcpProvider } from './pulsemcp.ts';
 import { mcpServersOrgProvider } from './mcpservers-org.ts';
 import { claudeDesktopProvider } from './claude-desktop.ts';
+import { allMcpsProvider } from './allmcps.ts';
 
 export const allProviders: Provider[] = [
   mcpRegistryProvider,
@@ -21,4 +22,5 @@ export const allProviders: Provider[] = [
   pulseMcpProvider,
   mcpServersOrgProvider,
   claudeDesktopProvider,
+  allMcpsProvider,
 ];
